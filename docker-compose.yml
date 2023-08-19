@@ -1,0 +1,25 @@
+version: '1'
+services:
+  backend:
+    build:
+      context: ./grocery
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./grocery:/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest  
+    container_name: my-postgres-db
+    environment:
+      POSTGRES_DB: postgres  
+      POSTGRES_USER: postgres  
+      POSTGRES_PASSWORD: postgres  
+    volumes:
+      - .pg_data:/var/lib/postgresql/data  
+    ports:
+      - "5432:5432" 
+   
