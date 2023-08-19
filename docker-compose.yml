@@ -2,12 +2,12 @@ version: '1'
 services:
   backend:
     build:
-      context: ./grocery
+      context: .
       dockerfile: Dockerfile
     ports:
       - 8000:8000
     volumes:
-      - ./grocery:/app
+      - .:/app
     depends_on:
       - db
 
